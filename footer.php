@@ -12,7 +12,7 @@
 ?>
 
 	</div><!-- #content -->
-
+</div><!--/content class-->
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'strapped' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'strapped' ), 'WordPress' ); ?></a>

@@ -59,5 +59,5 @@
       </div>           
     </nav>
   </header><!-- #masthead -->
-
+<div class="container"><!--added-->
 	<div id="content" class="site-content">
