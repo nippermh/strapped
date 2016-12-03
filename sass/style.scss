@@ -19,6 +19,11 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
+/*changes most go above bootstrap import to override them*/
+@import "vars/variables-site";
+
+//** Global textual link color.
+$link-color: $color__link;
 @import "bootstrap"; /*path is included in the gulp file. All bootstrap css will be in style.css*/
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
@@ -35,7 +40,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
-@import "vars/variables-site";
+
 @import "mixins/mixins-master";
 
 
