@@ -22,9 +22,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*changes most go above bootstrap import to override them*/
 @import "vars/variables-site";
 
-//** Global textual link color.
-$link-color: $color__link;
 @import "bootstrap"; /*path is included in the gulp file. All bootstrap css will be in style.css*/
+$fa-font-path: "./fonts"; /*the default path can be found in the */
+@import "font-awesome";
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------

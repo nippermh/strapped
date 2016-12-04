@@ -1,3 +1,32 @@
+/*post meta styling*/
+.entry-meta,
+.entry-footer {
+  font-size: 12px;
+
+  .fa {
+    color: $color__light-grey;
+    margin-right: 2px;
+  }
+
+  span {
+    margin-right: 15px;
+    display: inline-block;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  a {
+    color: $color__light-grey;
+
+    &:hover {
+      text-decoration: none;
+      color: $gray-dark;
+    }
+  }
+}
+/*underscores*/
 .sticky {
 	display: block;
 }
@@ -29,6 +58,7 @@
 /*adding the bootstrap classes to all the page elements*/
 .site-content { /*creates a row out of site-content*/
   @include make-row();
+    
    /*Nested styles below!*/
   .content-area { /*set the main content area width*/
     @include make-md-column(9);
