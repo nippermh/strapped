@@ -58,10 +58,11 @@
 /*adding the bootstrap classes to all the page elements*/
 .site-content { /*creates a row out of site-content*/
   @include make-row();
-    
+    word-break: break-word; 
    /*Nested styles below!*/
   .content-area { /*set the main content area width*/
     @include make-md-column(9);
+      
   }
 
   .widget-area { /*in the sidebar*/
