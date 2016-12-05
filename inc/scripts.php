@@ -3,7 +3,7 @@
  * Enqueue scripts and styles.
  */
 function strapped_scripts() {
-	wp_enqueue_style( 'strapped-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'strapped-style', get_template_directory_uri() . '/style.min.css' );
     
     wp_enqueue_style( 'bootstrap-styles', get_stylesheet_uri() . 'bower_components/dist/css/boostrap.min.css', array(), '3.3.7', 'all' );
 
@@ -16,8 +16,6 @@ function strapped_scripts() {
 	wp_enqueue_style( 'google-heading', '//fonts.googleapis.com/css?family=Raleway:400,300,700');
     
 	wp_enqueue_script( 'strapped-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
-	wp_enqueue_script( 'strapped-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
