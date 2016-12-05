@@ -117,6 +117,16 @@ function strapped_the_custom_logo() {
 }
 endif;
 /**
+ * Editing the Tag Widget
+ */
+function my_widget_tag_cloud_args( $args ) {
+  $args['largest'] = 10; //largest font size
+  $args['smallest'] = 10; //smallest font size
+  $args['unit'] = 'px'; //unit is pixels
+  return $args;
+}
+add_filter( 'widget_tag_cloud_args', 'my_widget_tag_cloud_args' );
+/**
  * Enqueue all the scripts
  */
 require get_template_directory() . '/inc/scripts.php';

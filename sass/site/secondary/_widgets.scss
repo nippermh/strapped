@@ -26,6 +26,11 @@
     border: none;
     box-shadow: none;
   }
+  div.tagcloud a {
+    @extend .btn;
+    @extend .btn-default;
+    margin-bottom: 5px;
+  }
 }
 .widget-area ul {
     list-style: none;
