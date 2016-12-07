@@ -22,8 +22,7 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'strapped' ); ?></a>
-
+	
 	<header id="masthead" class="site-header" role="banner">
     <nav role="navigation" id="navbar-main">
       <div class="navbar navbar-inverse navbar-static-top">
@@ -46,7 +45,7 @@
               'theme_location' => 'primary',
               'depth'      => 2,
               'container'  => false,
-              'menu_class'     => 'nav navbar-nav',
+              'menu_class'     => 'nav navbar-nav pull-right',
               'walker'     => new Bootstrap_Walker_Nav_Menu()
               );
             if (has_nav_menu('primary')) {

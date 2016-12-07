@@ -1,3 +1,17 @@
-$font-stack: "PT Sans", Arial, Helvetica, sans-serif;
-$font-base-stack: "PT Sans", Arial, Helvetica, sans-serif;
-
+body {
+    font-family: "PT Sans", Arial, Helvetica, sans-serif;
+    font-size:18px;
+    color: #747474;
+    font-weight:400;
+    line-height: 29px;
+}
+h1, h2, h3, h4, h5 {
+        color: #333;
+}
+ul#menu-primary.nav.navbar-nav{
+   
+}
+img.custom-logo{
+    padding-top:12px;
+    
+}
