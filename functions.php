@@ -35,6 +35,9 @@ function strapped_setup() {
 	 */
 	add_theme_support( 'title-tag' );
 
+    // Add logo upload in customizer WordPress 4.5+
+    add_theme_support( 'custom-logo' );
+    
 	/*
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
@@ -92,44 +95,46 @@ function strapped_content_width() {
 }
 add_action( 'after_setup_theme', 'strapped_content_width', 0 );
 
+if ( !function_exists( 'strapped_the_custom_logo' ) ) :
 /**
- * Register widget area.
+ * Displays the optional custom logo.
  *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ * Does nothing if the custom logo is not available.
+ *
  */
-function strapped_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'strapped' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'strapped' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
+function strapped_the_custom_logo() {
+    // Try to retrieve the Custom Logo
+    $output = '';
+    if (function_exists('get_custom_logo'))
+        $output = get_custom_logo();
+ 
+    // Nothing in the output: Custom Logo is not supported, or there is no selected logo
+    // In both cases we display the site's name
+    if (empty($output))
+        $output = '<a class="navbar-brand" href="' . esc_url(home_url('/')) . '">' . get_bloginfo('name') . '</a>';
+ 
+    echo $output;
 }
-add_action( 'widgets_init', 'strapped_widgets_init' );
+endif;
+/**
+ * Editing the Tag Widget
+ */
+function my_widget_tag_cloud_args( $args ) {
+  $args['largest'] = 10; //largest font size
+  $args['smallest'] = 10; //smallest font size
+  $args['unit'] = 'px'; //unit is pixels
+  return $args;
+}
+add_filter( 'widget_tag_cloud_args', 'my_widget_tag_cloud_args' );
+/**
+ * Enqueue all the scripts
+ */
+require get_template_directory() . '/inc/scripts.php';
 
 /**
- * Enqueue scripts and styles.
+ * Add widget areas
  */
-function strapped_scripts() {
-	wp_enqueue_style( 'strapped-style', get_stylesheet_uri() );
-
-	wp_enqueue_script( 'strapped-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
-	wp_enqueue_script( 'strapped-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'strapped_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
+require get_template_directory() . '/inc/widgets.php';
 
 /**
  * Custom template tags for this theme.
@@ -150,6 +155,12 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+* Bootstrap Walker Menu
+*/
+require get_template_directory() . '/inc/bootstrap-walker.php';
+
 ?>
 <?php
 
